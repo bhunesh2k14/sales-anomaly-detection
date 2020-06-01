@@ -11,7 +11,6 @@ namespace Anomaly_Detection
     {
 
         static readonly string _dataPath = Path.Combine(Environment.CurrentDirectory,"Data","product-sales.csv");
-        //assign the Number of records in dataset file to constant variable
         const int _docsize = 36;
 
       
@@ -59,7 +58,7 @@ namespace Anomaly_Detection
 
                 if (p.Prediction[0] == 1)
                 {
-                    results += " <-- alert is on, predicted changepoint";
+                    results += " <-- predicted changepoint";
                 }
                 Console.WriteLine(results);
             }
@@ -69,7 +68,6 @@ namespace Anomaly_Detection
 
         static IDataView CreateEmptyDataView(MLContext mlContext)
         {
-            // Create empty DataView. We just need the schema to call Fit() for the time series transforms
             IEnumerable<ProductSalesData> enumerableData = new List<ProductSalesData>();
             return mlContext.Data.LoadFromEnumerable(enumerableData);
         }
